@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@headlessui/react": "^0.0.0-insiders.af68a34",
+    "react": "^18.2.0",
+    "react-use": "^17.4.0",
+    "useref": "^1.4.4"
+  }
+}
