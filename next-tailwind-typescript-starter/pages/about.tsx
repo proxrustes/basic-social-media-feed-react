@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import List from '../components/List';
 import { sampleFeedData } from '../utils/sample-data';
+import { Transition } from '@headlessui/react';
 
 var counter = 0;
 
@@ -23,34 +24,7 @@ async function FetchForecast (latitude, longitude)
 
 
 
-function timerManager() {
 
-  const btn = document.getElementById("timeoutButton")
-  const counter_element = document.getElementById("counter")
-
-  btn.setAttribute('disabled', '');
-  btn.classList.add("animate-pulse")
-
-  let countdown = 30;
-  counter++;
-  counter_element.textContent = counter.toString();
-  btn.textContent = countdown.toString();
-
-  var i = setInterval(function(){
-    console.log(countdown);
-    countdown--;
-    btn.textContent = countdown.toString();
-  
-    if(countdown === 0) {
-        clearInterval(i);
-      btn.removeAttribute('disabled')
-      btn.classList.remove("animate-pulse")
-      btn.textContent = "Click"
-    }
-}, 1000);
-
-  
-}
 
 
 export default function AboutPage (){
@@ -64,6 +38,36 @@ export default function AboutPage (){
   var responce_api;
 
   const [location, setLocation] = useState(null);
+  const [isShowing, setIsShowing] = useState(false)
+
+  function timerManager() {
+    setIsShowing((isShowing) => !isShowing)
+    const btn = document.getElementById("timeoutButton")
+    const counter_element = document.getElementById("counter")
+  
+    btn.setAttribute('disabled', '');
+    btn.classList.add("animate-pulse")
+  
+    let countdown = 30;
+    counter++;
+    counter_element.textContent = counter.toString();
+    btn.textContent = countdown.toString();
+  
+    var i = setInterval(function(){
+      console.log(countdown);
+      countdown--;
+      btn.textContent = countdown.toString();
+    
+      if(countdown === 0) {
+          clearInterval(i);
+        btn.removeAttribute('disabled')
+        btn.classList.remove("animate-pulse")
+        btn.textContent = "Click"
+      }
+  }, 1000);
+  
+    
+  }
 
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(async function(position) {
@@ -98,12 +102,15 @@ export default function AboutPage (){
 <div className="flex items-center lg:order-2">
 <h1 className="block py-2 pr-4 pl-3 text-white bg-primary-700 font-bold rounded-lg border-b border-gray-100 lg:border-0 dark:border-gray-700">Welcome, {username?username: "random dude" }!</h1>
                     </div>
-                    <div id ="counter_div"className="w-28 flex items-center lg:order-2">
-                      
+                    
+                  
+                    <span className="w-28 flex items-center lg:order-2">
                     <p id="counter"className="text-white bg-primary-700 font-medium rounded-lg text-sm px-4 ">0</p>
                     <button id="timeoutButton" onClick={timerManager} className="text-gray-700 bg-gray-200 hover:bg-primary-200 focus:ring-4 focus:ring-primary-300 rounded-3xl font-bold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600  focus:outline-none dark:focus:ring-primary-800"><i className="fa-solid fa-bolt"></i></button>
           
-            </div>
+              
+          </span>
+                   
 
         </div>
     </nav>
@@ -113,7 +120,8 @@ export default function AboutPage (){
 <div className="grid place-items-center py-1 bg-gradient-to-r from-purple-500 to-pink-500">
       <List items = {sampleFeedData}/>
 </div>
-
+ 
+     
 
     </Layout>
 

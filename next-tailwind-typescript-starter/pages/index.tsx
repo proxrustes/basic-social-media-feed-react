@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import Layout from '../components/Layout'
 
 
-const IndexPage = () => (
+
+export default function IndexPage() {
+
+return(
 
   <Layout title="Homepage">
   <section className="card">
@@ -33,7 +35,7 @@ const IndexPage = () => (
       </div>
   </div>
 </section>
+
   </Layout>
 )
-
-export default IndexPage
+}

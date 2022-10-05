@@ -1,4 +1,5 @@
-import React from 'react'
+import { Transition } from '@headlessui/react';
+import React, { useState, useContext} from 'react'
 import { FeedItem } from '../interfaces'
 
 type Props = {
@@ -65,23 +66,33 @@ function changeColor(id){
     color: "white"
   };
  
-const ListItem = ({ data }: Props) => (
+ 
+  
+  export default function ListItem({ data }: Props) {
+    
+  return(
+    
   <div className="transition ease-in-out delay-150 hover:scale-110 duration-300 my-8 max-w-sm rounded-lg overflow-hidden shadow-2xl bg-white/50 hover:bg-white/70">
-            <img className="w-full rounded-lg rounded-b-none" src={data.pictureLink}/>
-            <div className="px-6 py-4 " >
-              <div id={"head_"+data.id} className="font-bold text-xl mb-2 drop-shadow-md ">{data.name}</div>
-              <p id={"body_"+data.id} className="text-gray-700 drop-shadow-md text-base">
-              {data.body}
-              </p>
-            </div>
-            <div className="px-6 pt-4 pb-2 ">
-              <button id={data.id.toString()} onClick={() => changeColor(data.id)} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm shadow-xl font-semibold text-gray-700 mr-2 mb-2">#randomize</button>
-              <span style={style}>
-              <i className="fa-regular fa-lg fa-heart"></i></span>
-              
-            </div>
-          </div>
+  <img className="w-full rounded-lg rounded-b-none" src={data.pictureLink}/>
+  <div className="px-6 py-4 " >
+    <div id={"head_"+data.id} className="font-bold text-xl mb-2 drop-shadow-md ">{data.name}</div>
+    <p id={"body_"+data.id} className="text-gray-700 drop-shadow-md text-base">
+    {data.body}
+    </p>
+  </div>
+  <div className="px-6 pt-4 pb-2 ">
+  <button id={data.id.toString()} onClick={() =>  changeColor(data.id)} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm shadow-xl font-semibold text-gray-700 mr-2 mb-2">#randomize</button>
+       
+    <span style={style}>
+     <i className="fa-regular fa-lg fa-heart"></i>
+    
+      </span>
+  </div>
+  
+     
 
-)
+</div>
+  )
 
-export default ListItem
+}
+
