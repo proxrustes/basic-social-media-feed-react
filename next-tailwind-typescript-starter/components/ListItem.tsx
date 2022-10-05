@@ -1,5 +1,3 @@
-import { Transition } from '@headlessui/react';
-import React, { useState, useContext} from 'react'
 import { FeedItem } from '../interfaces'
 
 type Props = {

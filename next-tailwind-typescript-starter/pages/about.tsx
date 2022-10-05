@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import List from '../components/List';
 import { sampleFeedData } from '../utils/sample-data';
-import { Transition } from '@headlessui/react';
 
 var counter = 0;
 
