@@ -14,3 +14,6 @@ A scrollable list of demo content on the lower part of the screen, where each el
 - a "#randomize" button, that changes head and body text randomly
 
 A footer. Just footer.
+![image](https://user-images.githubusercontent.com/91002471/194750028-68a9b4b1-20ff-4030-be45-f4b2d36926b1.png)
+
+![image](https://user-images.githubusercontent.com/91002471/194750040-b7580c30-0273-4eab-bb4b-f7bb5985ecd4.png)
